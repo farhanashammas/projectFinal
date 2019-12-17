@@ -1,0 +1,32 @@
+<div class="content" role="main" *ngFor='let i of user'>
+  
+        <!-- Highlight Card -->
+         <div class=" highlight-card " style="height: 100px; color: red; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"  >
+          <h1 style="margin-left:0%;" >Welcome {{i.fname}}!</h1>
+        </div>    
+
+</div>
+        <div class="jumbotron" > 
+                <div *ngFor='let i of user' style="margin-left: 40%;">
+                        <!-- <img src="{{i.dp}}" alt="dp"> -->
+                        <div><img src="{{dp}}" alt="Profile picture"> </div>
+                        <h3>First Name:   {{i.fname}}</h3>
+                        <h3>Last Name: {{i.lname}}</h3>
+                        <h2>Email:&nbsp;{{i.email}}</h2>
+                        <h2>Phone:&nbsp;{{i.phone}}</h2>
+                        
+                        <!-- <h3>Phone:{{i.phone}}</h3> -->
+                <br>
+                <br>
+                <br>
+                <!-- <button class="btn btn-primary" (click)='update()'>Edit Profile</button>&nbsp; -->
+                <button class="btn btn-primary" (click)='viewAds()'>My Ads</button>&nbsp;
+                <button class="btn btn-danger" (click)='logout()'>SignOut</button>
+            </div>
+        </div> 
+            
+       
+
+   
+   
+        

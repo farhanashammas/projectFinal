@@ -1,0 +1,23 @@
+
+  <div class="content" role="main">
+     <div class=" highlight-card " style="height: 50px; color: red; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"  >
+      <h1 style="margin-left:0%;" >Ad Details</h1>
+    </div>
+    <div *ngIf = "product">
+      <div class="card-container" > 
+      </div>
+    </div>
+     <div class="container">
+      <div *ngIf = "product">
+      <img src="{{product.image}}" alt="Image" style="width: 300px; height: 300px;">
+      <h3>{{product.title}}</h3>
+      <h5>Posted by:&nbsp; {{product.email}}</h5>
+      <h5>Price: &nbsp; {{product.price | currency:"INR"}}</h5>
+      <h5>Phone:&nbsp; {{product.phone}}</h5>
+      <h5>Usage: &nbsp; {{product.usage}}</h5>
+      <h5>Condition: &nbsp;{{product.condition}}</h5>
+      <h5>Location:&nbsp;{{product.location}}</h5>
+      <a routerLink="">Back</a>
+    </div>
+  </div>
+  </div>

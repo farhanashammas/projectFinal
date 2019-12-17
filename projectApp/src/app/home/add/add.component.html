@@ -1,0 +1,117 @@
+<div class="content" role="main">
+     <div class=" highlight-card " style="height: 70px; color: red; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"  > 
+      <h1 style="margin-left:0%;" >Please enter the details here</h1>
+    </div> 
+</div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="POST" name="form" #f="ngForm" (ngSubmit)="f.form.valid && AddProduct(productItem)" novalidate >
+                        <div class="form-group">
+                                <label>Choose a category for your product</label>
+                                <div class="spacer"></div>
+                                <select class="browser-default custom-select"  (change)="selectChangeHandlerItem($event)" name="category" [(ngModel)]="productItem.category" #category="ngModel" [ngClass]="{ 'is-invalid': f.submitted && category.invalid}"  required>
+                                    <option *ngFor="let i of items" value="{{i}}" >{{i}}</option>
+                                </select>
+                                <div *ngIf = "f.submitted && category.invalid" class="invalid-feedback">
+                                    <div *ngIf = "fname.errors.required">this field is Required</div>
+                                    <!-- <div *ngIf = "fname.errors.minlength">Please Enter Atleast 7 Characters</div> -->
+                                  </div>
+                            </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="title" [(ngModel)]="productItem.title" #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid}"  required required minlength = "7">
+                        <div *ngIf = "f.submitted && title.invalid" class="invalid-feedback">
+                            <div *ngIf = "title.errors.required">Title is Required</div>
+                            <div *ngIf = "title.errors.minlength">Please Enter Atleast 7 Characters</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input type="text" class="form-control" name="phone" [(ngModel)]="productItem.phone" placeholder="Enter Phone Number" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid}"  required pattern = "[0-9]{10}">
+                        <div *ngIf = "f.submitted && phone.invalid" class="invalid-feedback">
+                            <div *ngIf = "phone.errors.required">Phone number is Required</div>
+                            <div *ngIf = "phone.errors.pattern">Please Enter a valid phone number</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control" name="price"  [(ngModel)]="productItem.price" #price="ngModel" [ngClass]="{ 'is-invalid': f.submitted && price.invalid}"  required  >
+                        <div *ngIf = "f.submitted && price.invalid" class="invalid-feedback">
+                            <div *ngIf = "price.errors.required">Price is Required</div>
+                            <!-- <div *ngIf = "fname.errors.minlength">Please Enter Atleast 7 Characters</div> -->
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Describe your appliances</label>
+                        <input type="text-area" class="form-control" name="description" [(ngModel)]="productItem.description" #description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && description.invalid}"  required  minlength = "10">
+                        <div *ngIf = "f.submitted && description.invalid" class="invalid-feedback">
+                            <div *ngIf = "description.errors.required">Description is Required</div>
+                            <div *ngIf = "description.errors.minlength">Please Enter Atleast 10 Characters</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <div class="spacer"></div>
+                        <select class="browser-default custom-select"  (change)="selectChangeHandlerAge($event)" name="age" [(ngModel)]="productItem.age" #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid}"  required>
+                            <option *ngFor="let i of ageOptions" value="{{i}}" >{{i}}</option>
+                        </select>
+                        <div *ngIf = "f.submitted && age.invalid" class="invalid-feedback">
+                            <div *ngIf = "age.errors.required">This field is Required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Usage</label>
+                        <div class="spacer"></div>
+                        <select class="browser-default custom-select" (change)="selectChangeHandlerUsage($event)" name="usage" [(ngModel)]="productItem.usage" #usage="ngModel" [ngClass]="{ 'is-invalid': f.submitted && usage.invalid}"  required>
+                            <option *ngFor="let i of usageOptions" value="{{i}}" >{{i}}</option>
+                        </select>
+                        <div *ngIf = "f.submitted && usage.invalid" class="invalid-feedback">
+                            <div *ngIf = "usage.errors.required">This field is Required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Condition</label>
+                        <div class="spacer"></div>
+                        <select class="browser-default custom-select" (change)="selectChangeHandlerCondition($event)" name="condition" [(ngModel)]="productItem.condition" #condition="ngModel" [ngClass]="{ 'is-invalid': f.submitted && condition.invalid}"  required>
+                            <option *ngFor="let i of conditionOptions" value="{{i}}"  >{{i}}</option>
+                        </select>
+                        <div *ngIf = "f.submitted && condition.invalid" class="invalid-feedback">
+                            <div *ngIf = "condition.errors.required">This field is Required</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Image Url</label>
+                        <div class="spacer"></div>
+                        <input type="text" class="form-control" name="image" [(ngModel)]="productItem.image" #image="ngModel"  >
+                           
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <div class="spacer"></div>
+                        <select class="browser-default custom-select" (change)="selectChangeHandlerLocation($event)" name="location" [(ngModel)]="productItem.location" #location="ngModel" [ngClass]="{ 'is-invalid': f.submitted && location.invalid}"  required>
+                            <option  *ngFor="let i of locationOptions" value="{{i}}" >{{i}}</option>
+                        </select>
+                        <div *ngIf = "f.submitted && location.invalid" class="invalid-feedback">
+                            <div *ngIf = "location.errors.required">This field is Required</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Please enter your username to confirm ad</label>
+                        <input type="email" class="form-control" name="email"  [(ngModel)]="productItem.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid}"  required pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <div *ngIf = "f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf = "email.errors.required">Email Required</div>
+                            <div *ngIf = "email.errors.pattern">Please Enter a Valid Email</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Done" name="addProduct">
+                    </div>
+                    <a href="ads"><button class="btn btn-danger">Cancel</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
