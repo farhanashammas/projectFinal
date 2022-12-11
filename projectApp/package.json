@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.14",
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fs": "0.0.1-security",
     "igniteui-angular": "^8.2.12",
     "ng2-file-upload": "^1.4.0",
